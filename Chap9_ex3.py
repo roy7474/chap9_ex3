@@ -1,10 +1,10 @@
 '''Exercise 3: Write a program to read through a mail log, build a histogram using a dictionary 
-to count how many messages have come from each email address, and print the dictionary.
-Enter file name: mbox-short.txt'''
+to count how many messages have come from each email address, and print the dictionary. '''
+fhand = open('mbox-short.txt')
 
 #create the dictionary
 emails = dict()
-
+'''
 #get the file to be opened
 try:
     file_name = input('Enter the name of the file that you would like to open. Include the file format(file_name.format): ')
@@ -33,3 +33,18 @@ for line in fhand:
 #unescessary since it is more advanced, but more organized way to print the dict content
 for key, value in emails.items():
     print(f"{key}: {value}")
+'''
+
+
+read_file = fhand.read().split()
+for word in read_file:
+    # split the lines into words
+    #words=line.split()
+
+    if '@' in word:
+         emails[word] = emails.get(word, 0) + 1
+
+for word, count in emails.items():
+    print(f'{word}: {count}')
+
+
