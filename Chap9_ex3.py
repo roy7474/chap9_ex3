@@ -1,6 +1,6 @@
 '''Exercise 3: Write a program to read through a mail log, build a histogram using a dictionary 
 to count how many messages have come from each email address, and print the dictionary. '''
-fhand = open('mbox-short.txt')
+fhand = open('mbox-short.txt') # open the program directly for testing
 
 #create the dictionary
 emails_received = dict()
@@ -18,8 +18,6 @@ except:
 #open text file
 fhand = open(file_name)
 '''
-
-#
 for line in fhand:
     word = line.split()
     if len(word) < 2 or word[0] != 'From': 
@@ -31,27 +29,41 @@ for line in fhand:
         else:
             emails_received[word[1]] +=1
 
-
 print('This part of the program prints all of the emails received in the text file: ')
 #unescessary since it is more advanced, but more organized way to print the dict content
 for key, value in emails_received.items():
     print(f"{key}: {value}")
+
+
+#For clarity, end of program 1
 print('-------------------------- End of program 1 -------------')
-print(word)
+
+
+# Maximum amout of emails
+#max_value_key = max(emails_received, key = emails_received.get)
+#max_value = emails_received[max_value_key]
+cmax_value = float('-inf')
+clargest = None
+for key, value in emails_received.items():
+    if value > cmax_value:
+        cmax_value = value
+        clargest = key
+print(f'The highest score is {cmax_value} by {clargest}')
+
+
+
 # Extra program
-# This part of the program scans the entire text file
-
-
+# This part of the program scans the entire text file for all of the emails
 fhand = open('mbox-short.txt')
-read_file = fhand.read().split()
-#print(read_file)
+read_file = fhand.read().split() #open the file and make python read and split it into words
 for word in read_file:
-    # split the lines into words
     
+    #add any word with @ to the dictionary all_emails
     if '@' in word:
          all_emails[word] = all_emails.get(word, 0) + 1
 print('This part of the program prints all of the emails found in the text file:')
 
-
+# Print the counted results 
 for word, count in all_emails.items():
+    #Format for printing, key(word): value(count)
     print(f'{word}: {count}') 
