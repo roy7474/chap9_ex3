@@ -1,11 +1,11 @@
 '''Exercise 3: Write a program to read through a mail log, build a histogram using a dictionary 
 to count how many messages have come from each email address, and print the dictionary. '''
-fhand = open('mbox-short.txt') # open the program directly for testing
+#fhand = open('mbox-short.txt') # open the program directly for testing
 
 #create the dictionary
 emails_received = dict()
 all_emails = dict()
-'''
+
 #get the file to be opened
 try:
     file_name = input('Enter the name of the file that you would like to open. Include the file format(file_name.format): ')
@@ -17,7 +17,7 @@ except:
 
 #open text file
 fhand = open(file_name)
-'''
+
 for line in fhand:
     word = line.split()
     if len(word) < 2 or word[0] != 'From': 
@@ -36,20 +36,22 @@ for key, value in emails_received.items():
 
 
 #For clarity, end of program 1
-print('-------------------------- End of program 1 -------------')
+print('-------------------------- End of the 1st part of the program -------------')
 
 
-# Maximum amout of emails
-#max_value_key = max(emails_received, key = emails_received.get)
-#max_value = emails_received[max_value_key]
-cmax_value = float('-inf')
+'''Add code to the above program to figure out who has the most messages in the file. After all 
+the data has been read and the dictionary has been created, look through the dictionary using a 
+maximum loop (see Chapter 5: Maximum and minimum loops) to find who has the most messages and print 
+    how many messages the person has.”'''
+
+cmax_value = 0
 clargest = None
 for key, value in emails_received.items():
     if value > cmax_value:
         cmax_value = value
         clargest = key
-print(f'The highest score is {cmax_value} by {clargest}')
-
+print(f'The amount of emails received where {cmax_value} by {clargest}')
+print('-------------------------- End of the 2nd part of the program -------------')
 
 
 # Extra program
@@ -67,3 +69,4 @@ print('This part of the program prints all of the emails found in the text file:
 for word, count in all_emails.items():
     #Format for printing, key(word): value(count)
     print(f'{word}: {count}') 
+print('-------------------------- End of the program -------------')
